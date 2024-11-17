@@ -706,10 +706,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 2acae434-d6ce-454d-aefd-b3083180f426
+  cloudProjectId: 8928e655-3957-41b2-b8a9-5ad7463fbcc2
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Av Fighter
+  projectName: av-fighter
   organizationId: rocketgamesinc
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

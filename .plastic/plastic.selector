@@ -1,4 +1,4 @@
-repository "Av Fighter@BLHorseman@cloud"
+repository "av-fighter@rocketgamesinc@cloud"
   path "/"
     br "/main"
     co "/main"
