@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,6 +32,15 @@ public class CharacterController2D : MonoBehaviour
     public BoolEvent OnCrouchEvent;
     private bool m_wasCrouching = false;
 
+    //dash implementation
+    private bool canDash = true;
+    private bool isDashing = true;
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
+    public float dashingCooldown = 1f;
+
+    [SerializeField] private TrailRenderer m_TrailRenderer;
+
     private void Awake()
     {
         //m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -61,7 +72,7 @@ public class CharacterController2D : MonoBehaviour
     }
 
 
-    public void Move(float move, bool crouch, bool jump)
+    public void Move(float move, bool crouch, bool jump, bool dash)
     {
         // If crouching, check to see if the character can stand up
         if (!crouch)
@@ -131,8 +142,42 @@ public class CharacterController2D : MonoBehaviour
             m_Grounded = false;
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
+        //If dash
+        if (dash)
+        {
+            //If player should dash
+            if (canDash)
+            {
+                Debug.Log("Dash Called");
+                //turn off gravity and add force for time
+                StartCoroutine(Dash());
+
+            }
+            else
+            {
+                //dont dashs
+                Debug.Log("Cant dash teto");
+            }
+        }
+
     }
 
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = m_Rigidbody2D.gravityScale;
+        //m_Rigidbody2D.gravityScale = 0f;
+
+        m_Rigidbody2D.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        m_TrailRenderer.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        m_TrailRenderer.emitting = false;
+        m_Rigidbody2D.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
+    }
 
     private void Flip()
     {
