@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private string inputNameHorizontal;
+    [SerializeField] private string inputNameJump;
+    [SerializeField] private string inputNameDash;
 
     public CharacterController2D controller;
     float horizontalMove = 0f;
@@ -14,26 +17,26 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
 
-    
+    void Start()
+    {
+        Debug.Log(inputNameDash + "\n" + inputNameHorizontal + "\n" + inputNameJump);
+    }
+
 
     // Update is called once per frame
     void Update()
     {
 
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        horizontalMove = Input.GetAxisRaw(inputNameHorizontal) * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown(inputNameJump))
         {
             jump = true;
             animator.SetBool("isJumping", true);
         }
-        if (Input.GetButtonDown("Crouch"))
-        {
-            crouch = true;
-        }
 
-        if (Input.GetButtonDown("Dash"))
+        if (Input.GetButtonDown(inputNameDash))
         {
             Debug.Log("Dash pressed");
             dash = true;

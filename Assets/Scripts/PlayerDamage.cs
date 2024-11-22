@@ -30,6 +30,7 @@ public class PlayerDamage : MonoBehaviour
     void Die()
     {
         animator.SetBool("Death", true);
+        animator.SetTrigger("Death 0");
         Debug.Log("Enemy died");
     }
 }

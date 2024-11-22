@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCombatScript : MonoBehaviour
 {
+    [SerializeField] private string inputNameLightAttack;
+    [SerializeField] private string inputNameBlock;
     public Animator animator;
     public Transform attackPoint;
     public float attackRange = 0.5f;
@@ -24,13 +26,13 @@ public class PlayerCombatScript : MonoBehaviour
     {
         if(Time.time >= nextAttackTime)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown(inputNameLightAttack))
             {
                 Debug.Log("Attack");
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
             }
-            if (Input.GetButtonDown("Block1"))
+            if (Input.GetButtonDown(inputNameBlock))
             {
                 if (canBlock)
                 {
