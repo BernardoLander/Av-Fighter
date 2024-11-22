@@ -13,6 +13,12 @@ public class PlayerCombatScript : MonoBehaviour
     public float attackRate = 2f;
     float nextAttackTime = 0f;
 
+    private bool blocking = false;
+    public float blockCooldown = 1f;
+    public float blockTime = 2f;
+    public int blockAdv = 2;
+    private bool canBlock = true;
+
     // Update is called once per frame
     void Update()
     {
@@ -23,6 +29,14 @@ public class PlayerCombatScript : MonoBehaviour
                 Debug.Log("Attack");
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
+            }
+            if (Input.GetButtonDown("Block1"))
+            {
+                if (canBlock)
+                {
+                    Debug.Log("Block");
+                    StartCoroutine(Block());
+                }
             }
         }
         
@@ -39,9 +53,21 @@ public class PlayerCombatScript : MonoBehaviour
         //Damage them
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<PlayerDamage>().TakeDamage(attackDmg);
+            if (enemy.GetComponent<PlayerCombatScript>().GetBlock())
+            {
+                enemy.GetComponent<PlayerDamage>().TakeDamage(attackDmg/blockAdv);
+            }
+            else
+            {
+                enemy.GetComponent<PlayerDamage>().TakeDamage(attackDmg);
+            }
+            
         }
 
+    }
+    public bool GetBlock()
+    {
+        return blocking;
     }
 
     private void OnDrawGizmosSelected()
@@ -53,4 +79,15 @@ public class PlayerCombatScript : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
+    private IEnumerator Block()
+    {
+        canBlock = false;
+        blocking = true;
+        yield return new WaitForSeconds(blockTime);
+        blocking = false;
+        yield return new WaitForSeconds(blockCooldown);
+        canBlock = true;
+    }
+
 }

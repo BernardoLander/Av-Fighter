@@ -1705,6 +1705,9 @@ MonoBehaviour:
     m_Bits: 64
   attackDmg: 10
   attackRate: 2
+  blockCooldown: 1
+  blockTime: 2
+  blockAdv: 2
 --- !u!114 &1317033814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2042,6 +2045,9 @@ MonoBehaviour:
     m_Bits: 64
   attackDmg: 40
   attackRate: 2
+  blockCooldown: 1
+  blockTime: 2
+  blockAdv: 2
 --- !u!114 &1391797394
 MonoBehaviour:
   m_ObjectHideFlags: 0
