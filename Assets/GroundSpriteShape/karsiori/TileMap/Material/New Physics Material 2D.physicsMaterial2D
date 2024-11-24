@@ -1,11 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!62 &6200000
-PhysicsMaterial2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: New Physics Material 2D
-  friction: 0
-  bounciness: 0
+version https://git-lfs.github.com/spec/v1
+oid sha256:3cb8f8eef0f48a6debd22a43c0c4ba5950f42775add80aad5872e7b34f34f4eb
+size 270
