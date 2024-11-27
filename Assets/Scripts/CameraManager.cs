@@ -33,6 +33,7 @@ public class CameraManager : MonoBehaviour
         {
             if (playerMidpoint > playerOrigin)
             {
+                GetComponent<Transform>().set(playerMidpoint);
                 GetComponent<Camera>().orthographicSize = GetComponent<Camera>().orthographicSize + (playerMidpoint - playerOrigin);
                 playerMidpoint = bigger.position.x - smaller.position.x;
             }
