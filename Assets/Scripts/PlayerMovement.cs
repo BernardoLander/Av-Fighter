@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
     bool dash = false;
+    public float deathWaitTime = 1f;
+    bool death = false;
 
     public Animator animator;
 
@@ -45,11 +47,14 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-
-        controller.Move(horizontalMove * Time.fixedDeltaTime , crouch, jump, dash);
-        jump = false;
-        crouch = false;
-        dash = false;
+        if (!death)
+        {
+            controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, dash);
+            jump = false;
+            crouch = false;
+            dash = false;
+        }
+        
 
     }
     public void OnLanding()
@@ -60,6 +65,13 @@ public class PlayerMovement : MonoBehaviour
     public void OnCrouching(bool isCrouching)
     {
         animator.SetBool("isCrouching", isCrouching);
+    }
+
+    public IEnumerator Death()
+    {
+        death = true;
+        yield return new WaitForSeconds(deathWaitTime);
+        controller.Respawn();
     }
 
 }
