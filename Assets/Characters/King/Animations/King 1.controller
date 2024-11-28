@@ -32,7 +32,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_attack
+  m_Name: King1_attack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -107,7 +107,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_Running
+  m_Name: King_Running
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -133,7 +133,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player
+  m_Name: King 1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Speed
@@ -303,7 +303,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f28b6c15249d99740af9ee30e56118f1, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9a9976b8b854fe0479257a1d028330a3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -316,7 +316,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_death
+  m_Name: King_death
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -342,7 +342,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_hit
+  m_Name: King_hit
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
