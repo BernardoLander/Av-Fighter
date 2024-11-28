@@ -1,52 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    public Transform camera1Transform;
     public Transform player1Transform;
     public Transform player2Transform;
-    float playerMidpoint = 14f;
-    float playerOrigin = 14f;
-    float maxSize = 7.5f;
 
+    public float Yoffset = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        Camera camera = GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Transform bigger = player2Transform;
-        Transform smaller = player1Transform;
+        float MidpointX = (player1Transform.position.x + player2Transform.position.x) / 2;
+        float MidpointY = (player1Transform.position.y + player2Transform.position.y) / 2;
 
-        if (player1Transform.position.x > player2Transform.position.x)
-        {
-            bigger = player1Transform;
-            smaller = player2Transform;
-        }
-        playerMidpoint = bigger.position.x - smaller.position.x;
-        if (GetComponent<Camera>().orthographicSize <= maxSize) 
-        {
-            if (playerMidpoint > playerOrigin)
-            {
-                //GetComponent<Transform>().set(playerMidpoint);
-                GetComponent<Camera>().orthographicSize = GetComponent<Camera>().orthographicSize + (playerMidpoint - playerOrigin);
-                playerMidpoint = bigger.position.x - smaller.position.x;
-            }
-            
-        }
-        else if (GetComponent<Camera>().orthographicSize >= 5f)
-        {
-            if (playerMidpoint < playerOrigin)
-            {
-                GetComponent<Camera>().orthographicSize = GetComponent<Camera>().orthographicSize - (playerOrigin - playerMidpoint);
-                playerMidpoint = bigger.position.x - smaller.position.x;
-            }
+        //Yoffset = Yoffset - MidpointX;
 
+
+        camera1Transform.SetPositionAndRotation(new Vector3(MidpointX, MidpointY + Yoffset, -10f), new Quaternion(0f, 0f, 0f, 0f));
+
+        float DistanceX = Mathf.Pow(player1Transform.position.x - player2Transform.position.x, 2);
+        float DistanceY = Mathf.Pow(player1Transform.position.y - player2Transform.position.y, 2);
+
+        float CameraSize = MathF.Sqrt(DistanceX + DistanceY);
+        if (CameraSize >= 7f)
+        {
+            CameraSize = CameraSize / 2;
+
+            GetComponent<Camera>().orthographicSize = GetComponent<Camera>().orthographicSize = CameraSize;
         }
+        
+
     }
 }
