@@ -114,11 +114,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 387
-        width: 20
-        height: 73
+        y: 400
+        width: 16
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,19 +134,229 @@ TextureImporter:
       name: env_sprites_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 401
-        width: 55
-        height: 79
+        x: 54
+        y: 400
+        width: 4
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 30, y: 0, z: 9, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 4, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 6031bd47ef61a554a9cb473430ce791e
       internalID: 1035231841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_sprites_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 442
+        width: 42
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551e7b3335532f0419ba13cf21be9494
+      internalID: -247753443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_sprites_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 470
+        width: 64
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1054a4b6664ca8449bd31d30bf4dd990
+      internalID: 1321775653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_sprites_4
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 432
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cffa2699794b7a4ea52b6c60175e0e1
+      internalID: 223860910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_sprites_5
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 432
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7382d41511925549ba95c5144c420b5
+      internalID: -886423096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_sprites_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 432
+        width: 96
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13801980689c8b443b3f1c9a28b354e8
+      internalID: 153518622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_sprites_7
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 464
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31be6428a40acd34281b3ea2561df59c
+      internalID: 1275070906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_sprites_8
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 464
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15a7baaee956d1d44bf785a3a89213cf
+      internalID: -1474319363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_sprites_9
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 464
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4138b6227852ccf40b6022ac1a5979d6
+      internalID: 1566751626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_sprites_10
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 464
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74460e18aef2b814f87de3687f32fec3
+      internalID: 1881473405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: env_sprites_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 400
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39cd0f205772d204094eda88e9748211
+      internalID: -818280676
       vertices: []
       indices: 
       edges: []
@@ -164,6 +374,16 @@ TextureImporter:
     nameFileIdTable:
       env_sprites_0: -664227776
       env_sprites_1: 1035231841
+      env_sprites_10: 1881473405
+      env_sprites_11: -818280676
+      env_sprites_2: -247753443
+      env_sprites_3: 1321775653
+      env_sprites_4: 223860910
+      env_sprites_5: -886423096
+      env_sprites_6: 153518622
+      env_sprites_7: 1275070906
+      env_sprites_8: -1474319363
+      env_sprites_9: 1566751626
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
