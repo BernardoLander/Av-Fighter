@@ -31,7 +31,6 @@ public class CameraManager : MonoBehaviour
         float DistanceY = Mathf.Pow(player1Transform.position.y - player2Transform.position.y, 2);
 
         float CameraSize = MathF.Sqrt(DistanceX + DistanceY);
-        Debug.Log("Camera size: "+ CameraSize);
         if (CameraSize >= 7f)
         {
             CameraSize = CameraSize / 2;

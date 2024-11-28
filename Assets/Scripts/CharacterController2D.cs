@@ -20,6 +20,8 @@ public class CharacterController2D : MonoBehaviour
     public Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
+    private int m_secondJump = 0;
+    private bool jumping = false;
 
     [Header("Events")]
     [Space]
@@ -34,7 +36,6 @@ public class CharacterController2D : MonoBehaviour
 
     //dash implementation
     private bool canDash = true;
-    private bool isDashing = true;
     public float dashingPower = 24f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
@@ -57,6 +58,7 @@ public class CharacterController2D : MonoBehaviour
         bool wasGrounded = m_Grounded;
         m_Grounded = false;
 
+
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
@@ -65,6 +67,8 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 m_Grounded = true;
+                jumping = false;
+                m_secondJump = 0;
                 if (!wasGrounded)
                     OnLandEvent.Invoke();
             }
@@ -136,12 +140,16 @@ public class CharacterController2D : MonoBehaviour
             }
         }
         // If the player should jump...
+        
         if (m_Grounded && jump)
         {
-            // Add a vertical force to the player.
+        // Add a vertical force to the player.
             m_Grounded = false;
+            m_secondJump+= 1;
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
+            //second jump
+            
         //If dash
         if (dash)
         {
@@ -165,16 +173,24 @@ public class CharacterController2D : MonoBehaviour
     private IEnumerator Dash()
     {
         canDash = false;
-        isDashing = true;
         float originalGravity = m_Rigidbody2D.gravityScale;
         //m_Rigidbody2D.gravityScale = 0f;
+        float xForce = Mathf.Pow(m_Rigidbody2D.velocity.x,2);
+        float yForce = Mathf.Pow(m_Rigidbody2D.velocity.y, 2);
 
-        m_Rigidbody2D.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        float forceModule = Mathf.Sqrt(xForce + yForce);
+        forceModule += dashingPower;
+
+        float forceAngle = Mathf.Atan( xForce / yForce);
+
+        xForce = Mathf.Sin(forceAngle) * forceModule;
+        yForce = Mathf.Cos(forceAngle) * forceModule;
+
+        m_Rigidbody2D.velocity = new Vector2(xForce, yForce);
         m_TrailRenderer.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         m_TrailRenderer.emitting = false;
         m_Rigidbody2D.gravityScale = originalGravity;
-        isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
