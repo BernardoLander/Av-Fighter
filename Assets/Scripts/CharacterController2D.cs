@@ -34,11 +34,13 @@ public class CharacterController2D : MonoBehaviour
 
     //dash implementation
     private bool canDash = true;
-    public float dashingPower = 24f;
+    public float dashingPower = 1400f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
 
     [SerializeField] private TrailRenderer m_TrailRenderer;
+
+    public Transform respawnPoint;
 
     private void Awake()
     {
@@ -181,7 +183,7 @@ public class CharacterController2D : MonoBehaviour
         xForce = Mathf.Sin(forceAngle) * forceModule;
         yForce = Mathf.Cos(forceAngle) * forceModule;
 
-        m_Rigidbody2D.velocity = new Vector2(xForce, yForce);
+        m_Rigidbody2D.AddForce(new Vector2(xForce, yForce));
         m_TrailRenderer.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         m_TrailRenderer.emitting = false;
@@ -199,5 +201,10 @@ public class CharacterController2D : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    public void Respawn()
+    {
+        transform.position = respawnPoint.position;
     }
 }
