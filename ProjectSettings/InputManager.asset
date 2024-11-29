@@ -41,10 +41,10 @@ InputManager:
     m_Name: Horizontal2
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: left
-    positiveButton: right
-    altNegativeButton: 
-    altPositiveButton: 
+    negativeButton: j
+    positiveButton: l
+    altNegativeButton: left
+    altPositiveButton: right
     gravity: 3
     dead: 0.001
     sensitivity: 3
@@ -91,8 +91,8 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: down
     positiveButton: up
-    altNegativeButton: 
-    altPositiveButton: 
+    altNegativeButton: i
+    altPositiveButton: k
     gravity: 3
     dead: 0.001
     sensitivity: 3
@@ -108,7 +108,7 @@ InputManager:
     negativeButton: 
     positiveButton: left shift
     altNegativeButton: s
-    altPositiveButton: w
+    altPositiveButton: q
     gravity: 3
     dead: 0.001
     sensitivity: 3
@@ -124,7 +124,7 @@ InputManager:
     negativeButton: 
     positiveButton: right shift
     altNegativeButton: s
-    altPositiveButton: up
+    altPositiveButton: u
     gravity: 3
     dead: 0.001
     sensitivity: 3
@@ -154,7 +154,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: right ctrl
+    positiveButton: k
     altNegativeButton: 
     altPositiveButton: down
     gravity: 1000
@@ -186,7 +186,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: /
+    positiveButton: o
     altNegativeButton: 
     altPositiveButton: mouse 1
     gravity: 1000
@@ -252,7 +252,7 @@ InputManager:
     negativeButton: 
     positiveButton: space
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: w
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -266,9 +266,9 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: j
+    positiveButton: i
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: up
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
