@@ -8,11 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 1da9f5f461603b6458893ba2794f47f6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ModeChooser.unity
     guid: ec6e7a7e20c6d41b5b26899a2193b81c
   - enabled: 1
-    path: Assets/Scenes/CharacterChooser.unity
+    path: Assets/Scenes/CharacterChooser2.unity
     guid: 8c7f38a2514da4fe19a7dd75f2826196
   - enabled: 1
     path: Assets/Scenes/MapChooser.unity
@@ -32,4 +32,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 518473c6886af3848b83db91ce40b087
+  - enabled: 1
+    path: Assets/Scenes/CharacterChooser.unity
+    guid: 3fb919968df79564385cd863b7784263
+  - enabled: 1
+    path: Assets/Scenes/Maps/Abyss of Fate.unity
+    guid: 24ea87c0e18b0c84b9ee5b7f04ef7abb
+  - enabled: 1
+    path: Assets/Scenes/Maps/Desolation Plants.unity
+    guid: c506c8d325eda334aabbca779b5b6bfb
+  - enabled: 1
+    path: Assets/Scenes/Maps/Everforst Peaks.unity
+    guid: c9d56f9f8e3f5ae4999c45d7b54f6058
+  - enabled: 1
+    path: Assets/Scenes/Maps/Ruins of Eldoria.unity
+    guid: 9ec12e3922ae71b42830742334860f5c
+  - enabled: 1
+    path: Assets/Scenes/Maps/Whispering Woods.unity
+    guid: 83e3f2f9f6e1bc64b970da27fb8e0e2b
   m_configObjects: {}

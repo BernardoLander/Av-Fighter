@@ -16,8 +16,11 @@ public class PlayerMovement : MonoBehaviour
     bool dash = false;
     public float deathWaitTime = 1f;
     bool death = false;
+    public Transform respawnPoint;
+    public Transform playerTransform;
 
     public Animator animator;
+    float direction = 1f;
 
     void Start()
     {
@@ -30,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         horizontalMove = Input.GetAxisRaw(inputNameHorizontal) * runSpeed;
+        direction = Input.GetAxisRaw(inputNameHorizontal);
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
         if (Input.GetButtonDown(inputNameJump))
@@ -49,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!death)
         {
-            controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, dash);
+            controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, dash, direction);
             jump = false;
             crouch = false;
             dash = false;
@@ -66,12 +70,28 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetBool("isCrouching", isCrouching);
     }
-
-    public IEnumerator Death()
+    public void Death(int DeathCounter)
+    {
+        Debug.Log("Recibido mensaje de muerte");
+        StartCoroutine(deathHandler());
+        if (DeathCounter < 3) 
+        {
+            Respawn();
+        }
+    }
+    public IEnumerator deathHandler()
     {
         death = true;
         yield return new WaitForSeconds(deathWaitTime);
-        controller.Respawn();
+        death = false;
+    }
+
+    public void Respawn()
+    {
+        playerTransform.position = respawnPoint.position;
+        
+        Debug.Log("Death" + death);
+        animator.SetBool("Death", false);
     }
 
 }
