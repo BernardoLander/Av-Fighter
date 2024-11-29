@@ -43,12 +43,27 @@ public class GameManager : MonoBehaviour
         LoadScene("GameOver");
     }
 
-    public void StartGame()
+    public void SetPlayer1(int characterIndex)
     {
+        p1CharacterIndex = characterIndex;
+        LoadScene("ChooseCharacter2");
+    }
+
+    public void SetPlayer2(int characterIndex)
+    {
+        p2CharacterIndex = characterIndex;
+        LoadScene("MapChooser");
+    }
+
+    public void StartGame(int map)
+    {
+        mapIndex = map;
         if (mapIndex == 5) mapIndex = Random.Range(0, 4);
+        if (p1CharacterIndex == 9) p1CharacterIndex = Random.Range(0, 8);
+        if (p2CharacterIndex == 9) p2CharacterIndex = Random.Range(0, 8);
         LoadScene(maps[mapIndex]);
-        p1 = Instantiate (p1Prefabs[mapIndex], p1SpawnPoints[mapIndex].position, Quaternion.identity);
-        p2 = Instantiate(p1Prefabs[mapIndex], p1SpawnPoints[mapIndex].position, Quaternion.identity);
+        p1 = Instantiate(p1Prefabs[p1CharacterIndex], p1SpawnPoints[mapIndex].position, Quaternion.identity);
+        p2 = Instantiate(p1Prefabs[p2CharacterIndex], p1SpawnPoints[mapIndex].position, Quaternion.identity);
     }
 
     public void LoadScene(string sceneName)
