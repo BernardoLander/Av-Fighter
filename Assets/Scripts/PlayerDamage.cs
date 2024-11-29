@@ -9,6 +9,7 @@ public class PlayerDamage : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     int DeathCounter = 0;
+    public int playerNumber = 1;
 
     public HealthBar healthBar;
     public PlayerMovement PlayerMovement;
@@ -40,7 +41,7 @@ public class PlayerDamage : MonoBehaviour
     {
         DeathCounter++;
         animator.SetBool("Death", true);
-        healthBar.Death(DeathCounter);
+        healthBar.Death(DeathCounter, playerNumber);
         PlayerMovement.Death(DeathCounter);
         Debug.Log("Enemy died");
     }

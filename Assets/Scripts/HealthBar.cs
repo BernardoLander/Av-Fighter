@@ -12,6 +12,7 @@ public class HealthBar : MonoBehaviour
     public Image Heart1;
     public Image Heart2;
     public Image Heart3;
+    public GameManager gameManager;
 
 
 
@@ -32,7 +33,7 @@ public class HealthBar : MonoBehaviour
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 
-    public void Death(int DeathCounter)
+    public void Death(int DeathCounter, int playerNumber)
     {
         Debug.Log("Death counter: " + DeathCounter);
         if (DeathCounter == 1)
@@ -46,6 +47,7 @@ public class HealthBar : MonoBehaviour
         else if (DeathCounter == 3)
         {
             Heart3.color = Color.black;
+            gameManager.Winner(playerNumber);
         }
 
         //final death
