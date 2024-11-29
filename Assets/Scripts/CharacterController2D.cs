@@ -40,7 +40,7 @@ public class CharacterController2D : MonoBehaviour
 
     [SerializeField] private TrailRenderer m_TrailRenderer;
 
-    public Transform respawnPoint;
+    
 
     private void Awake()
     {
@@ -74,7 +74,7 @@ public class CharacterController2D : MonoBehaviour
     }
 
 
-    public void Move(float move, bool crouch, bool jump, bool dash)
+    public void Move(float move, bool crouch, bool jump, bool dash, float direction)
     {
         // If crouching, check to see if the character can stand up
         if (!crouch)
@@ -155,7 +155,7 @@ public class CharacterController2D : MonoBehaviour
             {
                 Debug.Log("Dash Called");
                 //turn off gravity and add force for time
-                StartCoroutine(Dash());
+                StartCoroutine(Dash(move, jump, direction));
 
             }
             else
@@ -167,9 +167,13 @@ public class CharacterController2D : MonoBehaviour
 
     }
 
-    private IEnumerator Dash()
+    private IEnumerator Dash(float move, bool jump, float direction)
     {
         canDash = false;
+        //if(move > 0 && jump)
+        {
+            //m_Rigidbody2D.velocity = new Vector2(xForce, yForce);
+        }
         float originalGravity = m_Rigidbody2D.gravityScale;
         //m_Rigidbody2D.gravityScale = 0f;
         float xForce = Mathf.Pow(m_Rigidbody2D.velocity.x,2);
@@ -183,7 +187,18 @@ public class CharacterController2D : MonoBehaviour
         xForce = Mathf.Sin(forceAngle) * forceModule;
         yForce = Mathf.Cos(forceAngle) * forceModule;
 
-        m_Rigidbody2D.AddForce(new Vector2(xForce, yForce));
+        if (direction >= 0)
+        {
+            m_Rigidbody2D.velocity = new Vector2(xForce, yForce);
+        }
+        else if (direction < 0) {
+            m_Rigidbody2D.velocity = new Vector2(xForce * -1, yForce);
+        }
+        else
+        {
+            m_Rigidbody2D.velocity = new Vector2(xForce, yForce);
+        }
+        
         m_TrailRenderer.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         m_TrailRenderer.emitting = false;
@@ -203,8 +218,5 @@ public class CharacterController2D : MonoBehaviour
         transform.localScale = theScale;
     }
 
-    public void Respawn()
-    {
-        transform.position = respawnPoint.position;
-    }
+    
 }

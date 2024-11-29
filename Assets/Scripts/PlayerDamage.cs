@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerDamage : MonoBehaviour
 {
     public Animator animator;
     public int maxHealth = 100;
     public int currentHealth;
+    int DeathCounter = 0;
 
     public HealthBar healthBar;
     public PlayerMovement PlayerMovement;
@@ -36,9 +38,10 @@ public class PlayerDamage : MonoBehaviour
 
     void Die()
     {
+        DeathCounter++;
         animator.SetBool("Death", true);
-        healthBar.Death();
-        PlayerMovement.Death();
+        healthBar.Death(DeathCounter);
+        PlayerMovement.Death(DeathCounter);
         Debug.Log("Enemy died");
     }
 }
