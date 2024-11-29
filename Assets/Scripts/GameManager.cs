@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     public void SetPlayer1(int characterIndex)
     {
         p1CharacterIndex = characterIndex;
-        LoadScene("ChooseCharacter2");
+        LoadScene("CharacterChooser2");
     }
 
     public void SetPlayer2(int characterIndex)
