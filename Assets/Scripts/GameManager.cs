@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("----- Game -----")]
     private readonly string[] maps = { "Whispering Woods", "Ruins of Eldoria", "Everfrost Peaks", "Abyss of Fate", "Desolation Plants" };
     public int mapIndex;
+    public int winner;
 
     [Header("----- Player 1 -----")]
     public GameObject[] p1Prefabs;
@@ -34,6 +35,12 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Winner(int player)
+    {
+        winner = player;
+        LoadScene("GameOver");
     }
 
     public void StartGame()
