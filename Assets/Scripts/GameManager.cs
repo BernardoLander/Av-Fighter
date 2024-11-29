@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private readonly string[] maps = { "Whispering Woods", "Ruins of Eldoria", "Everfrost Peaks", "Abyss of Fate", "Desolation Plants" };
     public int mapIndex;
     public int winner;
+    public GameObject cameraPrefab;
 
     [Header("----- Player 1 -----")]
     public GameObject[] p1Prefabs;
@@ -62,10 +63,13 @@ public class GameManager : MonoBehaviour
         if (p1CharacterIndex == 9) p1CharacterIndex = Random.Range(0, 8);
         if (p2CharacterIndex == 9) p2CharacterIndex = Random.Range(0, 8);
         LoadScene(maps[mapIndex]);
-        p1 = Instantiate(p1Prefabs[p1CharacterIndex], p1SpawnPoints[mapIndex].position, Quaternion.identity);
-        p2 = Instantiate(p1Prefabs[p2CharacterIndex], p1SpawnPoints[mapIndex].position, Quaternion.identity);
+        //p1 = Instantiate(p1Prefabs[p1CharacterIndex], p1SpawnPoints[mapIndex].position, Quaternion.identity);
+        //p2 = Instantiate(p1Prefabs[p2CharacterIndex], p1SpawnPoints[mapIndex].position, Quaternion.identity);
+        
     }
 
+    //public void SpawnPoint()
+    
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);

@@ -44,5 +44,7 @@ public class PlayerDamage : MonoBehaviour
         healthBar.Death(DeathCounter, playerNumber);
         PlayerMovement.Death(DeathCounter);
         Debug.Log("Enemy died");
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(currentHealth);
     }
 }

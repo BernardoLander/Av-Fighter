@@ -39,10 +39,12 @@ public class HealthBar : MonoBehaviour
         if (DeathCounter == 1)
         {
             Heart1.color = Color.black;
+            slider.value = slider.maxValue;
         }
         else if (DeathCounter == 2)
         {
             Heart2.color = Color.black;
+            slider.value = slider.maxValue;
         }
         else if (DeathCounter == 3)
         {
