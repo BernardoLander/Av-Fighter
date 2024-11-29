@@ -10,11 +10,11 @@ public class Winner : MonoBehaviour
 
     private void Start()
     {
-        gm = gameObject.GetComponent<GameManager>();
+        gm = Object.FindObjectOfType<GameManager>();
     }
 
     private void Update()
     {
-        winnerText.text = "WINNER: PLAYER" + gm.winner;
+        winnerText.text = "WINNER: PLAYER " + gm.winner;
     }
 }
