@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,6 +32,16 @@ public class CharacterController2D : MonoBehaviour
     public BoolEvent OnCrouchEvent;
     private bool m_wasCrouching = false;
 
+    //dash implementation
+    private bool canDash = true;
+    public float dashingPower = 1400f;
+    public float dashingTime = 0.2f;
+    public float dashingCooldown = 1f;
+
+    [SerializeField] private TrailRenderer m_TrailRenderer;
+
+    
+
     private void Awake()
     {
         //m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -46,6 +58,7 @@ public class CharacterController2D : MonoBehaviour
         bool wasGrounded = m_Grounded;
         m_Grounded = false;
 
+
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
@@ -61,7 +74,7 @@ public class CharacterController2D : MonoBehaviour
     }
 
 
-    public void Move(float move, bool crouch, bool jump)
+    public void Move(float move, bool crouch, bool jump, bool dash, float direction)
     {
         // If crouching, check to see if the character can stand up
         if (!crouch)
@@ -125,14 +138,74 @@ public class CharacterController2D : MonoBehaviour
             }
         }
         // If the player should jump...
+        
         if (m_Grounded && jump)
         {
-            // Add a vertical force to the player.
+        // Add a vertical force to the player.
             m_Grounded = false;
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
+            //second jump
+            
+        //If dash
+        if (dash)
+        {
+            //If player should dash
+            if (canDash)
+            {
+                Debug.Log("Dash Called");
+                //turn off gravity and add force for time
+                StartCoroutine(Dash(move, jump, direction));
+
+            }
+            else
+            {
+                //dont dashs
+                Debug.Log("Cant dash teto");
+            }
+        }
+
     }
 
+    private IEnumerator Dash(float move, bool jump, float direction)
+    {
+        canDash = false;
+        //if(move > 0 && jump)
+        {
+            //m_Rigidbody2D.velocity = new Vector2(xForce, yForce);
+        }
+        float originalGravity = m_Rigidbody2D.gravityScale;
+        //m_Rigidbody2D.gravityScale = 0f;
+        float xForce = Mathf.Pow(m_Rigidbody2D.velocity.x,2);
+        float yForce = Mathf.Pow(m_Rigidbody2D.velocity.y, 2);
+
+        float forceModule = Mathf.Sqrt(xForce + yForce);
+        forceModule += dashingPower;
+
+        float forceAngle = Mathf.Atan( xForce / yForce);
+
+        xForce = Mathf.Sin(forceAngle) * forceModule;
+        yForce = Mathf.Cos(forceAngle) * forceModule;
+
+        if (direction >= 0)
+        {
+            m_Rigidbody2D.velocity = new Vector2(xForce, yForce);
+        }
+        else if (direction < 0) {
+            m_Rigidbody2D.velocity = new Vector2(xForce * -1, yForce);
+        }
+        else
+        {
+            m_Rigidbody2D.velocity = new Vector2(xForce, yForce);
+        }
+        
+        m_TrailRenderer.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        m_TrailRenderer.emitting = false;
+        m_Rigidbody2D.gravityScale = originalGravity;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
+    }
 
     private void Flip()
     {
@@ -144,4 +217,6 @@ public class CharacterController2D : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+
+    
 }
